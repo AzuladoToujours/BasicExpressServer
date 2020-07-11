@@ -17,11 +17,11 @@ agent {
                       sh 'npm install'
               }
        }
-       stage('TestApp'){
-              steps {
-                      sh 'npm test'
-              }
-       }
+       // stage('TestApp'){
+       //        steps {
+       //                sh 'npm test'
+       //        }
+       // }
        stage('RunApp'){
               steps {
                       sh 'npm start & ls'
