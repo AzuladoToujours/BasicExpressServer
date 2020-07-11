@@ -14,23 +14,17 @@ agent {
        }
        stage('InstallRequirements'){
               steps {
-                     sh '''
-                           bash -c "npm i"
-                     '''
+                      sh 'npm install'
               }
        }
        stage('TestApp'){
               steps {
-                     sh '''
-                           bash -c "npm test"
-                     '''  
+                      sh 'npm test'
               }
        }
        stage('RunApp'){
               steps {
-                     sh '''
-                           bash -c "npm start & ls"
-                     '''
+                      sh 'npm start & ls'
               }
        }
  
