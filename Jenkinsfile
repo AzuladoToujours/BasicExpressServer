@@ -1,8 +1,6 @@
 
 pipeline{
- agent {
-        label 'DojoCP'
-       }
+ agent any
  stages{
        stage('Checkout-git'){
               steps {

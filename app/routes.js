@@ -1,18 +1,16 @@
-/**
- * Router import
- */
 const { Router } = require('express');
 
-const router = new Router();
+const router = Router();
+
 
 /**
  * References to the other routers of each resource
  */
-const apiv1 = require('./api/v1/route');
+const { testing } = require('./api/v1/components/hello-world/controller');
 
 /**
  * Paths defined to each resource
  */
-router.use('/api/v1', apiv1);
+router.get('/', testing);
 
 module.exports = router;

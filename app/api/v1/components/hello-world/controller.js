@@ -1,5 +1,6 @@
 const httpStatus = require('http-status');
 const util = require('./hello');
+require('dotenv').config();
 
 const get = async (req, res) => {
   try {
@@ -21,6 +22,9 @@ const get = async (req, res) => {
   }
 };
 
+const testing = async (req, res) => res.status(200).send(`Hello from ${process.env.HOST}`);
+
 module.exports = {
   get,
+  testing,
 };
