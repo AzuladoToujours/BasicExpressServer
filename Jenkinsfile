@@ -24,7 +24,7 @@ agent {
        // }
        stage('RunApp'){
               steps {
-                      sh 'npm start & ls'
+                      sh 'npm start'
               }
        }
  
