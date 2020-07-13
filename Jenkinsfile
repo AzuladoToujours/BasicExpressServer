@@ -9,6 +9,11 @@ pipeline {
         CI = 'true' 
     }
     stages {
+       stage('Checkout-git'){
+              steps {
+               git poll: true, url: 'https://github.com/AzuladoToujours/BasicExpressServer.git'    
+              }
+       }
         stage('Build') {
             steps {
                 sh 'npm install'
@@ -21,7 +26,4 @@ pipeline {
         }
     }
 }
-
-
-
 
