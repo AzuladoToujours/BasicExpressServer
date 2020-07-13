@@ -1,6 +1,6 @@
 
 pipeline{
- agent any
+agent any
  stages{
        stage('Checkout-git'){
               steps {
@@ -9,25 +9,19 @@ pipeline{
        }
        stage('InstallRequirements'){
               steps {
-                     sh '''
-                           bash -c "npm i"
-                     '''
+                      sh 'npm install'
               }
        }
        stage('TestApp'){
               steps {
-                     sh '''
-                           bash -c "npm test"
-                     '''  
+                      sh 'npm test'
               }
        }
-       stage('RunApp'){
-              steps {
-                     sh '''
-                           bash -c "npm start & ls"
-                     '''
-              }
-       }
+       // stage('RunApp'){
+       //        steps {
+       //                sh 'npm start'
+       //        }
+       // }
  
  }
 }
