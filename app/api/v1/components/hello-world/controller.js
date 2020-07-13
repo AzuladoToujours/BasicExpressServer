@@ -22,7 +22,7 @@ require('dotenv').config();
 //   }
 // };
 
-const testing = async (req, res) => res.status(200).send(`Hello from ${process.env.HOST}`);
+const testing = (req, res) => res.status(200).send(`Hello from ${process.env.HOST}`);
 
 module.exports = {
   testing,

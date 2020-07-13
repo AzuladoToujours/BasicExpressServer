@@ -1,11 +1,6 @@
 
 pipeline{
-agent {
-        docker {
-            image 'node:6-alpine' 
-            args '-p 3000:3000' 
-        }
-    }
+ agent any
  stages{
        stage('Checkout-git'){
               steps {
@@ -14,17 +9,23 @@ agent {
        }
        stage('InstallRequirements'){
               steps {
-                      sh 'npm install'
+                     sh '''
+                           bash -c "npm i"
+                     '''
               }
        }
-       // stage('TestApp'){
-       //        steps {
-       //                sh 'npm test'
-       //        }
-       // }
+       stage('TestApp'){
+              steps {
+                     sh '''
+                           bash -c "npm test"
+                     '''  
+              }
+       }
        stage('RunApp'){
               steps {
-                      sh 'npm start'
+                     sh '''
+                           bash -c "npm start & ls"
+                     '''
               }
        }
  
