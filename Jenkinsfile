@@ -1,20 +1,32 @@
 pipeline {
     agent any
-    tools {nodejs "node"}
+    
+    options {
+        timeout(time: 2, unit: 'MINUTES')
+    }
+
+    environments {
+        ARTIFACT_ID = "azuladotoujours/basic-express"
+    }
+
     stages {
-       stage('Checkout-git'){
-              steps {
-               git poll: true, url: 'https://github.com/AzuladoToujours/BasicExpressServer.git'    
-              }
-       }
-        stage('Build') {
+        stage('Build'){
             steps {
-                sh 'npm install'
+                script {
+                    dockerImage = docker.build "${env.ARTIFACT_ID}"
+                }
             }
         }
-        stage('Test') { 
+        stage('Publish'){
+            when{
+                branch 'master'
+            }
             steps {
-                 sh 'npm test'
+                script {
+                    docker.withRegistry("","DockerHubCredentials") {
+                        dockerImage.push()
+                    }
+                }
             }
         }
     }
