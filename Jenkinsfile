@@ -5,7 +5,7 @@ pipeline {
         timeout(time: 2, unit: 'MINUTES')
     }
 
-    environments {
+    environment {
         ARTIFACT_ID = "azuladotoujours/basic-express"
     }
 
