@@ -7,6 +7,8 @@ pipeline {
 
     environment {
         ARTIFACT_ID = "azuladotoujours/basic-express"
+        SERVICE_NAME = 'basic-express'
+        STACK_NAME = 'test'
     }
 
     stages {
@@ -18,15 +20,17 @@ pipeline {
             }
         }
         stage('Publish'){
-            when{
-                branch 'master'
-            }
             steps {
                 script {
                     docker.withRegistry("","DockerHubCredentials") {
                         dockerImage.push()
                     }
                 }
+            }
+        }
+        stage('Schedule Deploy'){
+            steps {
+                build job: 'cd-test', parameters: [string(name: 'ARTIFACT_ID', value:"${env.ARTIFACT_ID}"), string(name: 'SERVICE_NAME', value: "${SERVICE_NAME}"), string(name: 'STACK_NAME', value: "${STACK_NAME}")], wait: false
             }
         }
     }
