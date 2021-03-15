@@ -22,7 +22,7 @@ require('dotenv').config();
 //   }
 // };
 
-const testing = (req, res) => res.status(200).send('First deploy');
+const testing = (req, res) => res.status(200).send('Testing webhook');
 
 module.exports = {
   testing,
