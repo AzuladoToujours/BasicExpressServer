@@ -22,7 +22,7 @@ require('dotenv').config();
 //   }
 // };
 
-const testing = (req, res) => res.status(200).send('Testing webhook');
+const testing = (req, res) => res.status(200).send('Hola desde LIS expo, Jenkins Pipeline');
 
 module.exports = {
   testing,
