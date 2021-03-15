@@ -22,7 +22,7 @@ require('dotenv').config();
 //   }
 // };
 
-const testing = (req, res) => res.status(200).send(`Hola raulito again jeje be`);
+const testing = (req, res) => res.status(200).send('First deploy');
 
 module.exports = {
   testing,
